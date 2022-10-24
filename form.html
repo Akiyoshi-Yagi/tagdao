@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head></head>
+<body>
+  <h1>データ入力窓口</h1>
+  <form action="http://localhost:3000/api/proposal/create" method="POST">
+    タイトル：<input type="text" name="title">
+    イメージ；<input type="text" name="image">
+    リンク：<input type="text" name="link">
+    説明：<textarea type="text" name="description"></textarea>
+    blocknumber<input type="number" name="blocknumber">
+    開始日<input type="date" name="start">
+    終了日<input type="date" name="expair">
+    
+    <button type="submit">投稿</button>
+  </form>
+</body>
+</html>
