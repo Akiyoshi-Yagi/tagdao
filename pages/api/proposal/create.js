@@ -1,5 +1,6 @@
 import connectDB from "../../../utils/database"
 import { ProposalModel } from "../../../utils/schemaModels"
+import auth from "../../../utils/auth"
 
 const createProposal = async(req, res) => {
     
@@ -13,4 +14,4 @@ const createProposal = async(req, res) => {
     
 }
   
-export default createProposal
+export default auth(createProposal)

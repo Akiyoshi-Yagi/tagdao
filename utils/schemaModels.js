@@ -13,6 +13,7 @@ const ProposalSchema = new Schema({
     blocknumber: Number,
     start: Date,
     expair: Date,
+    address: String,
 })
 
 const UserSchema = new Schema({

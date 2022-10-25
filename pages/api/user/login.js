@@ -15,10 +15,15 @@ const loginUser = async(req, res) => {
             const token = jwt.sign(payload, secret_key, {expiresIn: "23h"})
             console.log(token)
 
-
             return res.status(200).json({message: "ログイン成功"})
         }else{
-            return res.status(400).json({message: "ログイン失敗"})
+            await UserModel.create(req.body)
+            const payload = {
+                address: req.body.address,
+            }
+            const token = jwt.sign(payload, secret_key, {expiresIn: "23h"})
+            
+            return res.status(200).json({message: "ユーザー登録成功"})
         }
     } catch (error) {
         return res.status(400).json({message: "ログイン失敗"})
