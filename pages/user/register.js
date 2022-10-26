@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ethers } from "ethers"; 
+import { useRouter } from 'next/router'
 
 
 const Login = () => {
@@ -7,6 +8,9 @@ const Login = () => {
      * ユーザーのウォレットアドレスを格納するために使用する状態変数を定義します。
      */
     const [currentAccount, setCurrentAccount] = useState("");
+
+    const router = useRouter()
+
     /*この段階でcurrentAccountの中身は空*/
     console.log("currentAccount: ", currentAccount);
     /*
@@ -80,7 +84,10 @@ const Login = () => {
                 })
             })
             const jsonData = await response.json()
+            localStorage.setItem("token", jsonData.token)
             alert(jsonData.message)
+            router.push("/proposal/readall")
+
         } catch (error) {
             alert("ユーザー登録失敗")
         }
@@ -88,9 +95,7 @@ const Login = () => {
   
     // renderNotConnectedContainer メソッドを定義します。
     const renderNotConnectedContainer = () => (
-      <button
-        onClick={connectWallet}
-      >
+      <button onClick={connectWallet}>
         Connect to Wallet
       </button>
     );

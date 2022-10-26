@@ -9,8 +9,8 @@ const auth = (handler) => {
             return handler(req, res)
         }
 
-        //const token = await req.headers.authorization.split(" ")[1]
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoic2FraSIsImlhdCI6MTY2NjY0NDE2MywiZXhwIjoxNjY2NzI2OTYzfQ.ado-XtlbSXoAjpNFdW5D3pHXEY4fxEmfaOyWv1rCQMI"
+        const token = await req.headers.authorization.split(" ")[1]
+        //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZGRyZXNzIjoic2FraSIsImlhdCI6MTY2NjY0NDE2MywiZXhwIjoxNjY2NzI2OTYzfQ.ado-XtlbSXoAjpNFdW5D3pHXEY4fxEmfaOyWv1rCQMI"
         if(!token){
             return res.status(401).json({message: "トークンがありません"})
         }
@@ -21,6 +21,7 @@ const auth = (handler) => {
             console.log(req.body)
             return handler(req, res)
         } catch (error) {
+            console.log(req.headers.authorization)
             return res.status(401).json({message: "トークンが正しくないです"})
             
         }
