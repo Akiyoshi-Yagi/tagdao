@@ -7,7 +7,7 @@ const updateProposal = async(req, res) => {
     try{
         await connectDB()
         const singleProposal = await ProposalModel.findById(req.query.proposal_id)
-        console.log(singleProposal)
+        //console.log(singleProposal)
         if(singleProposal.address === req.body.address){
             
             await ProposalModel.updateOne({_id: req.query.proposal_id}, req.body)

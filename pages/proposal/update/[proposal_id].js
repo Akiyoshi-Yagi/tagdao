@@ -46,7 +46,7 @@ const UpdateProposal = (props) => {
        
         // 指定ミリ秒間だけループさせる（CPUは常にビジー状態）
         while (new Date() - startMsec < waitMsec);
-      }
+    }
     
     const pageTransition = () => {
         sleep(3000)
@@ -76,6 +76,7 @@ export const getServerSideProps = async(context) => {
     const response = await fetch(`http://localhost:3000/api/proposal/${context.query.proposal_id}`) 
     const singleProposal = await response.json()
     console.log(singleProposal)
+    console.log("aaa")
 
     return{
         props: singleProposal
