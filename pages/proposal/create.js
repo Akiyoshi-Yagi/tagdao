@@ -58,7 +58,7 @@ const CreateProposal = () => {
         <div>
             <h1 className="page-title">プロポーサル作成</h1>
             <form onSubmit={handleSubmit}>
-                <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="title" placeholder="アイテム名" required/>
+                <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="title" placeholder="トークン名" required/>
                 <input value={image} onChange={(e) => setImage(e.target.value)} type="text" name="image" placeholder="画像" required/>
                 <input value={link} onChange={(e) => setLink(e.target.value)} type="text" name="link" placeholder="リンク" required/>
                 <textarea value={description} onChange={(e) => setDescription(e.target.value)} name="description" rows={15} placeholder="商品説明" required></textarea>

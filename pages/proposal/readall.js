@@ -23,7 +23,7 @@ const ReadAllProposals = (props) => {
             )}
             </div>
             <div>
-                <button onClick={pageTransition}>作成</button>
+                <button onClick={pageTransition}>Tokenタグ付け申請</button>
             </div>
         </div>
     )

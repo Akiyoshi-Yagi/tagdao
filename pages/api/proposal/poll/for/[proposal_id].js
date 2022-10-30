@@ -1,9 +1,21 @@
 import connectDB from "../../../../../utils/database" 
 import { ProposalModel, PollModel } from "../../../../../utils/schemaModels"
 import auth from "../../../../../utils/auth"
+import { Network, Alchemy } from "alchemy-sdk";
 
+const settings = {
+    apiKey: process.env.ALCHEMY_API, // Replace with your Alchemy API Key.
+    network: Network.ETH_MAINNET, // Replace with your network.
+  };
 
 const updateProposal = async(req, res) => {
+
+    const alchemy = new Alchemy(settings);
+    const nftjson = await alchemy.nft.getOwnersForContract(process.env.NFT_CONTRACT_ADDRESS)
+
+    if (!nftjson.owners.includes(req.body.address)){
+        return res.status(400).json({message: " 投票権NFTを持っていません。"}) 
+    }
     await connectDB()
     const singlePoll = await PollModel.findOne({proposalId : req.query.proposal_id, address : req.body.address})
     console.log("singlePoll")

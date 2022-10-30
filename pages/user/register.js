@@ -86,22 +86,39 @@ const Login = () => {
             const jsonData = await response.json()
             localStorage.setItem("token", jsonData.token)
             alert(jsonData.message)
-            router.push("/proposal/readall")
+            router.push("/user/register")
 
         } catch (error) {
             alert("ユーザー登録失敗")
         }
     }
   
-    // renderNotConnectedContainer メソッドを定義します。
+    // renderNotConnectedContainer メソッドを定義
+    /*
     const renderNotConnectedContainer = () => (
       <button onClick={connectWallet}>
         Connect to Wallet
       </button>
     );
+    */
+
     /*
-     * ページがロードされたときに useEffect()内の関数が呼び出されます。
+     * ページがロードされたときに useEffect()内の関数が呼び出される
      */
+
+    const transitionToTokenList = () => {
+      router.push("/tag/readall")
+    }
+
+    const transitionToHolderPage = () => {
+      router.push("/holder/home")
+    }
+
+    const transitionToProposalList = () => {
+      router.push("/proposal/readall")
+    }
+
+
     useEffect(() => {
       checkIfWalletIsConnected();
     }, []);
@@ -110,7 +127,18 @@ const Login = () => {
         <button onClick={connectWallet}>
                  connect wellet
         </button>
+        <button onClick={transitionToTokenList}>
+                 Registerd Token List
+        </button>
+        {currentAccount === ""
+          ? <button >please connect wallet fast</button>
+          : <button onClick={transitionToHolderPage}>Token Holder Only</button>
+        }
+        <button onClick={transitionToProposalList}>
+                 Proposal List
+        </button>
     </div>
+
 
     );
   };
