@@ -9,18 +9,33 @@ const ReadAllProposals = (props) => {
 
     return (
         <div>
-            <div className="grid-container-in">
-            {props.allProposals.map(Proposal => 
-                <Link href={`/proposal/${Proposal._id}`} key={Proposal._id}>
-                    <a className="card">
-                        <div className="texts-area">
-                            <h2>¥{Proposal.title}</h2>
-                            <p>{Proposal.description.substring(0, 80)}...</p>
-                            <h2>¥{Proposal.expair}</h2>
-                        </div>
-                    </a>
-                </Link>
-            )}
+            <div className="container">
+                <div className="item">
+                {props.allProposals.map(Proposal => 
+                    <Link href={`/proposal/${Proposal._id}`} key={Proposal._id}>
+                        <a className="card">
+                            <div className="texts-area">
+                                <h2>¥{Proposal.title}</h2>
+                                <p>{Proposal.description.substring(0, 80)}...</p>
+                                <h2>¥{Proposal.expair}</h2>
+                            </div>
+                        </a>
+                    </Link>
+                )}
+                </div>
+                <div className="item">
+                {props.allProposals.map(Proposal => 
+                    <Link href={`/proposal/${Proposal._id}`} key={Proposal._id}>
+                        <a className="card">
+                            <div className="texts-area">
+                                <h2>¥{Proposal.title}</h2>
+                                <p>{Proposal.description.substring(0, 80)}...</p>
+                                <h2>¥{Proposal.expair}</h2>
+                            </div>
+                        </a>
+                    </Link>
+                )}
+                </div>
             </div>
             <div>
                 <button onClick={pageTransition}>Tokenタグ付け申請</button>
